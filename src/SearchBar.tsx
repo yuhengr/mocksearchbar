@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import './SearchBar.css';
 
+interface SearchBarProps {
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
 
 function displaySearchResults() {
     console.log("Button clicked. Showing search results.");
 }
 
-function SearchBar() {
+function SearchBar({setQuery}:SearchBarProps) {
 
     const [input, setInput] = useState('');
 
@@ -17,6 +20,7 @@ function SearchBar() {
                 value={input}
                 onChange={(e) => {
                     setInput(e.target.value);
+                    setQuery(e.target.value);
                 }}>
             </input>
             <button
